@@ -1,6 +1,6 @@
 package io.discordia.msscbrewery.web.controller.v2;
 
-
+/**
 import io.discordia.msscbrewery.service.v2.BeerServiceV2;
 import io.discordia.msscbrewery.web.model.BeerDto;
 import io.discordia.msscbrewery.service.BeerService;
@@ -52,3 +52,4 @@ public class BeerControllerV2 {
         beerService.deleteById(beerId);
     }
 }
+*/

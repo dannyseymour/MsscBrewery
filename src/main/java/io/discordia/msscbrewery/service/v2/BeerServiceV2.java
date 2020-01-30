@@ -1,6 +1,6 @@
 package io.discordia.msscbrewery.service.v2;
 
-
+/*
 import io.discordia.msscbrewery.web.model.BeerDto;
 import io.discordia.msscbrewery.web.model.v2.BeerDtoV2;
 
@@ -18,3 +18,4 @@ public interface BeerServiceV2 {
 
     void deleteById(UUID beerId);
 }
+*/

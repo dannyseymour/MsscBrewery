@@ -2,6 +2,9 @@ package io.discordia.msscbrewery.web.controller;
 
 import io.discordia.msscbrewery.web.model.BeerDto;
 import io.discordia.msscbrewery.service.BeerService;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import lombok.val;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -16,17 +19,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+@Slf4j
+@RequiredArgsConstructor
 @Validated
 @RestController
 @RequestMapping("/api/v1/beer")
 public class BeerController {
 
     private final BeerService beerService;
-
-    @Autowired
-    public BeerController(BeerService beerService) {
-        this.beerService = beerService;
-    }
 
 
     @GetMapping(value="/{beerId}")
@@ -36,8 +36,9 @@ public class BeerController {
 
     @PostMapping
     public ResponseEntity handlePost(@Valid @NotNull @RequestBody BeerDto beerDto){
-        BeerDto saveDto = beerService.saveNewBeer(beerDto);
-        HttpHeaders headers = new HttpHeaders();
+        log.debug("in handle post");
+        val saveDto = beerService.saveNewBeer(beerDto);
+        val headers = new HttpHeaders();
         //TODO add hostname
         headers.add("Location","http://localhost:8080/api/v1/beer/"+saveDto.getId().toString());
         return new ResponseEntity(headers, HttpStatus.CREATED);
